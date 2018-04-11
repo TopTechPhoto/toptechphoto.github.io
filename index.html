@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="icon" href="img/favicon.png" type="image/png">
 	<link rel="shortcut icon" href="img/favicon.png" type="image/png">
@@ -18,6 +18,26 @@
 	<meta property="og:description" content="TopTechPhoto provides software for professional and amateur usage. Our service Pics.io makes cloud a perfect place for your media library.">
 	<meta property="og:url" content="http://toptechphoto.com">
 	<meta property="og:image" content="http://toptechphoto.com/img/cover.jpg">
+
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org",
+			"@type": "Organization",
+			"legalName": "TopTechPhoto",
+			"url": "https://toptechphoto.com/",
+			"logo": "https://toptechphoto.com/img/logo.png",
+			"sameAs": [
+				"https://www.facebook.com/pics.io",
+				"https://twitter.com/toptechphoto"
+			],
+			"contactPoint": [{
+				"@type": "ContactPoint",
+				"email": "support@pics.io",
+				"url": "http://support.pics.io/",
+				"contactType": "customer service"
+			}]
+		}
+	</script>
 </head>
 <body>
 
@@ -26,14 +46,14 @@
 	<!--****************HEADER****************-->
 	<header id="header">
 		<div class="logo">
-			<img src="img/logo.png" />
+			<img src="img/logo.png" alt="TopTechPhoto" />
 			<h1 class="companyName">Top<span>Tech</span>Photo</h1>
 		</div>
 	</header><!-- end #header-->
 
 	<!--****************MAIN****************-->
 	<main id="main">
-			
+
 		<span class="h2">What we do</span>
 		<div class="blockWhatWeDo">
 			<p>We are the company behind <a href="https://pics.io">Pics.io</a> brand. This is our flagship product. It’s a digital asset management system that allows our customers to compete successfully on their markets and build the business around scalable platform. Among our users are photographers, designers, creative agencies, enterprises, e-commerce and others. Our users are all around the world with major part in US and EU.</p>
@@ -41,40 +61,42 @@
 			<p>Besides our products we’re providing high quality <a href="https://pics.io/custom-development">custom development service</a> in imaging and web development fields.</p>
 		</div>
 
-		<span class="h2Picsio"><img src="img/picsioH2.png" /></span>
+		<span class="h2">Pics.io</span>
 		<div class="blockProducts">
-			<ul>
+			<ul class="blockProductsList">
 				<li>
-					<a href="https://pics.io/" class="iconPicsio" target="_blank">
-						<div class="popupInfo">
-							<span class="title"><b>Pics.io</b></span>
-							<p>The best media management system and revision control for creatives. Powered by unlimited storage of Google Drive servers.</p>
-						</div>
-					</a>
+					<a href="https://pics.io/" class="iconPicsio icon" target="_blank" title="Edit.pics.io"></a>
+					<div class="productDescription">
+						<span class="title">Pics.io</span>
+						<p>The best media management system and revision control for creatives. Powered by unlimited storage of Google Drive servers.</p>
+					</div>
 				</li>
 				<li>
-					<a href="https://raw.pics.io/" class="iconRaw" target="_blank">
-						<div class="popupInfo">
-							<span class="title"><b>Raw</b>.pics.io</span>
-							<p>In-browser raw converter, converts PDF, CR2, NEF, ARW, ORF, PEF, RAF, DNG and other files to JPEG, PNG and other formats online. Supports Canon and Nikon raw formats directly.</p>
-						</div>
-					</a>
+					<a href="https://raw.pics.io/" class="iconRaw icon" target="_blank" title="Raw.pics.io"></a>
+					<div class="productDescription">
+						<span class="title">Raw.pics.io</span>
+						<p>In-browser raw converter that allows to convert multiple formats online. In particular, it is:</p>
+						<ul>
+							<li><a href="https://raw.pics.io/convert-cr2-to-jpeg" target="_blank">CR2 to JPEG converter</a></li>
+							<li><a href="https://raw.pics.io/convert-nef-to-jpeg" target="_blank">NEF to JPEG converter</a></li>
+							<li><a href="https://raw.pics.io/convert-raw-to-jpeg" target="_blank">RAW to JPEG converter</a></li>
+							<li><a href="https://raw.pics.io/convert-arw-to-jpeg" target="_blank">ARW to JPEG converter</a></li>
+						</ul>
+					</div>
 				</li>
 				<li>
-					<a href="http://edit.pics.io/online-photo-editor" class="iconEdit" target="_blank">
-						<div class="popupInfo">
-							<span class="title"><b>Edit</b>.pics.io</span>
-							<p>Online photo editor. Based on our proprietary technology that allows to edit up to 42 MPix files right inside browser and preserve 32-bit color depth.</p>
-						</div>
-					</a>
+					<a href="http://edit.pics.io/online-photo-editor" class="iconEdit icon" target="_blank" title="Edit.pics.io"></a>
+					<div class="productDescription">
+						<span class="title">Edit.pics.io</span>
+						<p>Online photo editor. Based on our proprietary technology that allows to edit up to 42 MPix files right inside browser and preserve 32-bit color depth.</p>
+					</div>
 				</li>
 				<li>
-					<a href="https://live.pics.io/" class="iconLive" target="_blank">
-						<div class="popupInfo">
-							<span class="title"><b>Live</b>.pics.io</span>
-							<p>Browser based pure peer-to-peer live photo sharing. Live recreates the experience of real-world slideshows, when your guests would come by to see photos and hear the story you tell them behind the shots.</p>
-						</div>
-					</a>
+					<a href="https://live.pics.io/" class="iconLive icon" target="_blank" title="Live.pics.io"></a>
+					<div class="productDescription">
+						<span class="title">Live.pics.io</span>
+						<p>Browser based pure peer-to-peer live photo sharing. Live recreates the experience of real-world slideshows, when your guests would come by to see photos and hear the story you tell them behind the shots.</p>
+					</div>
 				</li>
 			</ul>
 		</div>
