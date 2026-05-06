@@ -1,154 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<link rel="icon" href="img/favicon.png" type="image/png">
-	<link rel="shortcut icon" href="img/favicon.png" type="image/png">
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="shortcut icon" href="img/favicon.png" type="image/png">
 
-	<title>DAM system, photo editor, custom development, imaging software | TopTechPhoto</title>
-	<meta name="description" content="TopTechPhoto provides software for professional and amateur usage. Our service Pics.io makes cloud a perfect place for your media library." />
-	<link rel="image_src" href="http://toptechphoto.com/img/cover.jpg" />
-	<meta itemprop="image" content="http://toptechphoto.com/img/cover.jpg">
-	<meta name="keywords" content="picsio, DAM, MAM, imaging, converter, software, photography, toptechphoto, professional, workflow" />
+  <title>TopTechPhoto — DAM, PIM &amp; AI Tools for Business</title>
+  <meta name="description" content="TopTechPhoto is a product company behind Pics.io, Toriut, and Provenyx — B2B SaaS solutions for asset management, ecommerce, and AI data access." />
+  <link rel="image_src" href="http://toptechphoto.com/img/cover.jpg" />
+  <meta itemprop="image" content="http://toptechphoto.com/img/cover.jpg">
+  <meta name="keywords" content="picsio, DAM, MAM, PIM, AI, imaging, converter, software, photography, toptechphoto, professional, workflow" />
 
-	<meta property="og:title" content="DAM system, photo editor, custom development, imaging software | TopTechPhoto">
-	<meta property="og:description" content="TopTechPhoto provides software for professional and amateur usage. Our service Pics.io makes cloud a perfect place for your media library.">
-	<meta property="og:url" content="http://toptechphoto.com">
-	<meta property="og:image" content="http://toptechphoto.com/img/cover.jpg">
+  <meta property="og:title" content="TopTechPhoto — DAM, PIM &amp; AI Tools for Business">
+  <meta property="og:description" content="TopTechPhoto is a product company behind Pics.io, Toriut, and Provenyx — B2B SaaS solutions for asset management, ecommerce, and AI data access.">
+  <meta property="og:url" content="http://toptechphoto.com">
+  <meta property="og:image" content="http://toptechphoto.com/img/cover.jpg">
 
-	<script type="application/ld+json">
-		{
-			"@context": "http://schema.org",
-			"@type": "Organization",
-			"legalName": "TopTechPhoto",
-			"url": "https://toptechphoto.com/",
-			"logo": "https://toptechphoto.com/img/logo.png",
-			"sameAs": [
-				"https://www.facebook.com/toptechphoto",
-				"https://twitter.com/toptechphoto"
-			],
-			"contactPoint": [{
-				"@type": "ContactPoint",
-				"email": "support@pics.io",
-				"url": "http://support.pics.io/",
-				"contactType": "customer service"
-			}]
-		}
-	</script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "legalName": "TopTechPhoto",
+      "url": "https://toptechphoto.com/",
+      "logo": "https://toptechphoto.com/img/logo.png",
+      "sameAs": [
+        "https://www.facebook.com/toptechphoto",
+        "https://twitter.com/toptechphoto"
+      ],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "email": "support@pics.io",
+        "url": "http://support.pics.io/",
+        "contactType": "customer service"
+      }]
+    }
+  </script>
+
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f7f7f5;
+      --bg-deep: #0b0d10;
+      --ink: #0a0a0a;
+      --ink-2: #3a3a3a;
+      --ink-3: #6b6b6b;
+      --line: #e8e8e4;
+      --line-2: #d8d8d2;
+      --accent: #1a1a1a;
+      --pics: #2563eb;
+      --toriut: #0f766e;
+      --provenyx: #7c3aed;
+      --radius: 14px;
+      --maxw: 1180px;
+      --fs-display: clamp(40px, 6vw, 72px);
+      --fs-h2: clamp(28px, 3.4vw, 40px);
+      --fs-h3: 20px;
+      --fs-body: 16px;
+      --fs-small: 14px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      font-feature-settings: 'cv11', 'ss01', 'ss03';
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--ink); }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+    /* ---------- Top nav ---------- */
+    header.top {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(140%) blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-weight: 600; letter-spacing: -0.02em; font-size: 18px; color: var(--ink);
+    }
+    .logo img { height: 32px; width: auto; display: block; }
+    nav.links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-2); }
+    nav.links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-size: 14px; padding: 8px 14px; border: 1px solid var(--line-2);
+      border-radius: 999px; transition: background .15s, border-color .15s;
+    }
+    .nav-cta:hover { background: var(--bg-soft); border-color: var(--ink); }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 88px 0 72px; border-bottom: 1px solid var(--line); }
+    .eyebrow {
+      display: inline-block; font-size: 12px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-3); margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: var(--fs-display); line-height: 1.05; letter-spacing: -0.035em;
+      margin: 0 0 24px; max-width: 920px; font-weight: 600;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--pics), var(--toriut));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero p.lede {
+      font-size: 20px; color: var(--ink-2); max-width: 720px;
+      margin: 0 0 40px; line-height: 1.5;
+    }
+    .hero .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 20px; border-radius: 999px; font-size: 15px; font-weight: 500;
+      transition: transform .15s, background .15s, border-color .15s;
+    }
+    .btn-primary { background: var(--ink); color: #fff; }
+    .btn-primary:hover { background: #2a2a2a; color: #fff; }
+    .btn-ghost { border: 1px solid var(--line-2); color: var(--ink); }
+    .btn-ghost:hover { border-color: var(--ink); background: var(--bg-soft); }
+    .arrow { width: 14px; height: 14px; }
+
+    /* ---------- Product strip ---------- */
+    .products { padding: 96px 0; }
+    .section-head {
+      display: flex; align-items: end; justify-content: space-between;
+      gap: 32px; margin-bottom: 48px; flex-wrap: wrap;
+    }
+    .section-head h2 {
+      font-size: var(--fs-h2); letter-spacing: -0.025em; line-height: 1.1;
+      margin: 0; max-width: 640px; font-weight: 600;
+    }
+    .section-head p { color: var(--ink-3); margin: 0; max-width: 380px; font-size: 15px; }
+
+    .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 900px) { .pgrid { grid-template-columns: 1fr; } }
+
+    .pcard {
+      position: relative; padding: 32px;
+      border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--bg);
+      display: flex; flex-direction: column; gap: 20px; min-height: 280px;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .pcard:hover {
+      transform: translateY(-2px); border-color: var(--line-2);
+      box-shadow: 0 18px 60px -30px rgba(0,0,0,0.18);
+    }
+    .pcard .tag {
+      align-self: flex-start; font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 5px 10px; border-radius: 999px;
+      background: var(--bg-soft); color: var(--ink-2);
+    }
+    .pcard h3 {
+      font-size: 28px; letter-spacing: -0.02em; margin: 0; font-weight: 600;
+    }
+    .pcard p { color: var(--ink-2); margin: 0; font-size: 15px; }
+    .pcard .more {
+      margin-top: auto; font-size: 14px; font-weight: 500;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .pcard.pics .accent-bar { background: var(--pics); }
+    .pcard.toriut .accent-bar { background: var(--toriut); }
+    .pcard.provenyx .accent-bar { background: var(--provenyx); }
+    .accent-bar {
+      position: absolute; top: 0; left: 0; height: 3px; width: 64px;
+      border-top-left-radius: var(--radius);
+    }
+
+    /* ---------- Why band ---------- */
+    .why { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .why .wrap { padding-top: 88px; padding-bottom: 88px; }
+    .why h2 {
+      font-size: var(--fs-h2); letter-spacing: -0.025em; line-height: 1.1;
+      margin: 0 0 48px; font-weight: 600; max-width: 720px;
+    }
+    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    @media (max-width: 900px) { .facts { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .facts { grid-template-columns: 1fr; } }
+    .fact {
+      padding: 24px; border-radius: var(--radius);
+      background: #fff; border: 1px solid var(--line);
+    }
+    .fact .num { font-size: 32px; font-weight: 600; letter-spacing: -0.02em; }
+    .fact .lab { color: var(--ink-3); font-size: 14px; margin-top: 6px; }
+
+    /* ---------- Tools ---------- */
+    .tools { padding: 96px 0; border-top: 1px solid var(--line); }
+    .tools .row {
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center;
+    }
+    @media (max-width: 900px) { .tools .row { grid-template-columns: 1fr; gap: 32px; } }
+    .tools h2 { font-size: var(--fs-h2); margin: 0 0 16px; letter-spacing: -0.025em; font-weight: 600; }
+    .tools p { color: var(--ink-2); font-size: 16px; margin: 0 0 24px; }
+    .tool-card {
+      background: var(--bg-deep); color: #fff; border-radius: var(--radius);
+      padding: 32px;
+    }
+    .tool-card h3 { margin: 0 0 8px; font-size: 22px; letter-spacing: -0.02em; font-weight: 600; }
+    .tool-card p { color: #c7c7c2; font-size: 15px; margin: 0 0 20px; }
+    .tool-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .tool-list a {
+      display: block; padding: 10px 14px; border-radius: 8px;
+      background: rgba(255,255,255,0.06); font-size: 13px; color: #e7e7e2;
+      transition: background .15s;
+    }
+    .tool-list a:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+    /* ---------- Company strip ---------- */
+    .company { padding: 96px 0; border-top: 1px solid var(--line); }
+    .ccols {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+    }
+    @media (max-width: 900px) { .ccols { grid-template-columns: 1fr; } }
+    .ccol h3 {
+      font-size: 14px; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--ink-3); margin: 0 0 12px; font-weight: 500;
+    }
+    .ccol p { color: var(--ink-2); font-size: 15px; margin: 0 0 12px; }
+    .ccol a.inline { border-bottom: 1px solid var(--line-2); padding-bottom: 1px; }
+    .ccol a.inline:hover { border-color: var(--ink); }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: var(--bg-deep); color: #c7c7c2; padding: 72px 0 40px;
+    }
+    footer .fgrid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 32px;
+    }
+    @media (max-width: 900px) { footer .fgrid { grid-template-columns: 1fr 1fr; } }
+    footer h4 {
+      color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em;
+      margin: 0 0 16px; font-weight: 500;
+    }
+    footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+    footer a { font-size: 14px; color: #c7c7c2; }
+    footer a:hover { color: #fff; }
+    .fbrand { max-width: 280px; }
+    .fbrand p { font-size: 14px; color: #9c9c97; line-height: 1.6; margin: 12px 0 0; }
+    .legal {
+      margin-top: 56px; padding-top: 24px; border-top: 1px solid #1f2227;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 13px; color: #7a7a75;
+    }
+    .legal a { color: #9c9c97; }
+  </style>
 </head>
 <body>
 
-<div id="all">
+  <!-- ============== TOP NAV ============== -->
+  <header class="top">
+    <div class="wrap nav">
+      <a href="/" class="logo">
+        <img src="img/logo.png" alt="TopTechPhoto" />
+        TopTechPhoto
+      </a>
+      <nav class="links">
+        <a href="#products">Products</a>
+        <a href="#why">Why us</a>
+        <a href="#company">Company</a>
+        <a href="#tools">Tools</a>
+        <a href="mailto:hello@toptechphoto.com">Contact</a>
+      </nav>
+      <a class="nav-cta" href="https://pics.io">Try Pics.io →</a>
+    </div>
+  </header>
 
-	<!--****************HEADER****************-->
-	<header id="header">
-		<div class="logo">
-			<img src="img/logo.png" alt="TopTechPhoto" />
-			<h1 class="companyName">Top<span>Tech</span>Photo</h1>
-		</div>
-	</header><!-- end #header-->
+  <!-- ============== HERO ============== -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">TopTechPhoto · Software for content &amp; knowledge</span>
+      <h1>The platform stack for <em>content and product information</em>.</h1>
+      <p class="lede">
+        We build software that helps modern enterprises find, manage, and distribute
+        everything they create — visual assets and product data — across teams and channels.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#products">See our products
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="mailto:hello@toptechphoto.com">Talk to us</a>
+      </div>
+    </div>
+  </section>
 
-	<!--****************MAIN****************-->
-	<main id="main">
+  <!-- ============== PRODUCTS ============== -->
+  <section class="products" id="products">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Two products. Built for the way modern teams manage content and catalog data.</h2>
+        <p>Each product is sold and used independently — but they share a vocabulary, a permissions model, and the same engineering foundation.</p>
+      </div>
 
-		<span class="h2">What we do</span>
-		<div class="blockWhatWeDo">
-			<p>We are the company behind <a href="https://pics.io">Pics.io</a> brand. This is our flagship product. It’s a digital asset management system that allows our customers to compete successfully on their markets and build the business around scalable platform. Among our users are photographers, designers, creative agencies, enterprises, e-commerce and others. Our users are all around the world with major part in US and EU.</p>
-			<p>TopTechPhoto is a team of engineers, sales and marketers with strong data driven approach. Our core competencies are in field of digital imaging (still and video), software development and business analysis.</p>
-			<p>Besides our products we’re providing high quality <a href="https://pics.io/custom-development">custom development service</a> in imaging and web development fields.</p>
-		</div>
+      <div class="pgrid">
+        <article class="pcard pics">
+          <span class="accent-bar"></span>
+          <span class="tag">Pics.io · DAM</span>
+          <h3>Digital Asset Management</h3>
+          <p>Find, share, and govern visual content with AI. Trusted by photographers, agencies, e-commerce teams, and enterprises across the US and EU. Runs on Google Drive or Amazon S3 — no vendor lock-in.</p>
+          <a class="more" href="https://pics.io">Visit Pics.io
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
 
-		<span class="h2">Pics.io</span>
-		<div class="blockProducts">
-			<ul class="blockProductsList">
-				<li>
-					<a href="https://pics.io/" class="iconPicsio icon" target="_blank" title="Edit.pics.io"></a>
-					<div class="productDescription">
-						<span class="title">Pics.io</span>
-						<p>The best media management system and revision control for creatives. Powered by unlimited storage of Google Drive servers.</p>
-					</div>
-				</li>
-				<li>
-					<a href="https://raw.pics.io/" class="iconRaw icon" target="_blank" title="Raw.pics.io"></a>
-					<div class="productDescription">
-						<span class="title">Raw.pics.io</span>
-						<p>In-browser raw converter that allows to convert multiple formats online. In particular, it is:</p>
-						<ul>
-							<li><a href="https://raw.pics.io/convert-cr2-to-jpeg" target="_blank">CR2 to JPEG converter</a></li>
-							<li><a href="https://raw.pics.io/convert-nef-to-jpeg" target="_blank">NEF to JPEG converter</a></li>
-							<li><a href="https://raw.pics.io/convert-raw-to-jpeg" target="_blank">RAW to JPEG converter</a></li>
-							<li><a href="https://raw.pics.io/convert-arw-to-jpeg" target="_blank">ARW to JPEG converter</a></li>
-						</ul>
-					</div>
-				</li>
-				<li>
-					<a href="http://edit.pics.io/online-photo-editor" class="iconEdit icon" target="_blank" title="Edit.pics.io"></a>
-					<div class="productDescription">
-						<span class="title">Edit.pics.io</span>
-						<p>Online photo editor. Based on our proprietary technology that allows to edit up to 42 MPix files right inside browser and preserve 32-bit color depth.</p>
-					</div>
-				</li>
-				<li>
-					<a href="https://live.pics.io/" class="iconLive icon" target="_blank" title="Live.pics.io"></a>
-					<div class="productDescription">
-						<span class="title">Live.pics.io</span>
-						<p>Browser based pure peer-to-peer live photo sharing. Live recreates the experience of real-world slideshows, when your guests would come by to see photos and hear the story you tell them behind the shots.</p>
-					</div>
-				</li>
-			</ul>
-		</div>
+        <article class="pcard toriut">
+          <span class="accent-bar"></span>
+          <span class="tag">Toriut · PIM</span>
+          <h3>Product Information Management</h3>
+          <p>One source of truth for product data — specs, copy, media, translations — syndicated everywhere your products are sold. Built for catalogs that grow faster than the team managing them.</p>
+          <a class="more" href="https://toriut.com">Visit Toriut
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
 
-		<span class="h2">Follow us</span>
-		<div class="blockFollowUs">
-			<ul>
-				<li><a href="http://blog.pics.io/" class="iconBlog" target="_blank">blog</a></li>
-				<li><a href="https://www.facebook.com/toptechphoto" class="iconFB" target="_blank">facebook</a></li>
-				<li><a href="https://twitter.com/toptechphoto" class="iconTW" target="_blank">twitter</a></li>
-			</ul>
-		</div>
+      </div>
+    </div>
+  </section>
 
-		<span class="h2">Contacts</span>
-		<div class="blockContacts">
-			<div class="subblockContacts">
-				<div class="item">
-					<span class="name">Support:</span>
-					<div class="value">
-						<div><a href="mailto:support@pics.io">Email</a></div>
-					</div>
-				</div>
-			</div>
-			<div class="subblockContacts">
-				<div class="item">
-					<span class="name">Updates:</span>
-					<div class="value">
-						<div><a href="http://blog.pics.io" target="_blank">Blog</a></div>
-					</div>
-				</div>
-				<div class="item">
-					<span class="name">Investor relations:</span>
-					<div class="value">
-						<div><a href="mailto:investors@toptechphoto.com">Email</a></div>
-					</div>
-				</div>
-			</div>
-		</div>
+  <!-- ============== WHY ============== -->
+  <section class="why" id="why">
+    <div class="wrap">
+      <h2>A software company built around digital imaging, distributed work, and AI-native architecture.</h2>
+      <div class="facts">
+        <div class="fact">
+          <div class="num">10+ yrs</div>
+          <div class="lab">building digital imaging software, from raw conversion to enterprise DAM.</div>
+        </div>
+        <div class="fact">
+          <div class="num">US &amp; EU</div>
+          <div class="lab">distributed team, customers across both regions, GDPR-aware by design.</div>
+        </div>
+        <div class="fact">
+          <div class="num">AI-native</div>
+          <div class="lab">tagging, search, transcription, and reasoning baked into every product.</div>
+        </div>
+        <div class="fact">
+          <div class="num">No lock-in</div>
+          <div class="lab">your storage, your data, your control — across Google Drive and S3.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	</main><!-- end #main-->
+  <!-- ============== TOOLS ============== -->
+  <section class="tools" id="tools">
+    <div class="wrap">
+      <div class="row">
+        <div>
+          <h2>Free tools, born from the same engineering.</h2>
+          <p>
+            Some of our internal imaging tech runs as free, in-browser utilities used by millions
+            of people every year. They're a quiet way of showing what's under the hood of Pics.io.
+          </p>
+          <a class="btn btn-ghost" href="https://raw.pics.io">Open raw.pics.io
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="tool-card">
+          <h3>raw.pics.io</h3>
+          <p>In-browser RAW converter. No upload, no install, no account.</p>
+          <div class="tool-list">
+            <a href="https://raw.pics.io/convert-cr2-to-jpeg">CR2 → JPEG</a>
+            <a href="https://raw.pics.io/convert-nef-to-jpeg">NEF → JPEG</a>
+            <a href="https://raw.pics.io/convert-arw-to-jpeg">ARW → JPEG</a>
+            <a href="https://raw.pics.io/convert-raw-to-jpeg">RAW → JPEG</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</div><!-- end #all-->
+  <!-- ============== COMPANY ============== -->
+  <section class="company" id="company">
+    <div class="wrap">
+      <div class="ccols">
+        <div class="ccol">
+          <h3>About</h3>
+          <p>TopTechPhoto Inc. is a Delaware-incorporated software company with a distributed team
+            across the US and EU. We build software for content, product information, and
+            company knowledge.</p>
+          <p><a class="inline" href="/about">Read our story</a></p>
+        </div>
+        <div class="ccol">
+          <h3>Press &amp; investors</h3>
+          <p>For partnership, M&amp;A, or investor questions, reach out below. We respond within
+            two business days.</p>
+          <p>
+            <a class="inline" href="mailto:press@toptechphoto.com">press@toptechphoto.com</a><br/>
+            <a class="inline" href="mailto:investors@toptechphoto.com">investors@toptechphoto.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PRS667ZSC5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- ============== FOOTER ============== -->
+  <footer>
+    <div class="wrap">
+      <div class="fgrid">
+        <div class="fbrand">
+          <h4 style="color:#fff;letter-spacing:-0.01em;text-transform:none;font-size:18px;">TopTechPhoto</h4>
+          <p>Software for content, product information, and AI-ready company knowledge. Built by a distributed team across the US and EU.</p>
+        </div>
+        <div>
+          <h4>Products</h4>
+          <ul>
+            <li><a href="https://pics.io">Pics.io</a></li>
+            <li><a href="https://toriut.com">Toriut</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Tools</h4>
+          <ul>
+            <li><a href="https://raw.pics.io">raw.pics.io</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/press">Press</a></li>
+            <li><a href="mailto:investors@toptechphoto.com">Investors</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/company/toptechphoto">LinkedIn</a></li>
+            <li><a href="https://x.com/toptechphoto">X</a></li>
+            <li><a href="https://blog.pics.io">Pics.io blog</a></li>
+            <li><a href="mailto:support@pics.io">Support</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="legal">
+        <span>© <span id="yr">2026</span> TopTechPhoto Inc. All rights reserved.</span>
+        <span>
+          <a href="/privacy">Privacy</a>&nbsp;·&nbsp;
+          <a href="/terms">Terms</a>&nbsp;·&nbsp;
+          <a href="/dpa">DPA</a>&nbsp;·&nbsp;
+          <a href="/security">Security</a>
+        </span>
+      </div>
+    </div>
+  </footer>
 
-  gtag('config', 'G-PRS667ZSC5');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PRS667ZSC5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PRS667ZSC5');
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
