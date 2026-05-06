@@ -179,19 +179,13 @@
       border-top-left-radius: var(--radius);
     }
 
-    /* ---------- Why band ---------- */
-    .why { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .why .wrap { padding-top: 88px; padding-bottom: 88px; }
-    .why h2 {
-      font-size: var(--fs-h2); letter-spacing: -0.025em; line-height: 1.1;
-      margin: 0 0 48px; font-weight: 600; max-width: 720px;
-    }
-    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    /* ---------- Facts grid (inside company) ---------- */
+    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 64px; }
     @media (max-width: 900px) { .facts { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 540px) { .facts { grid-template-columns: 1fr; } }
     .fact {
       padding: 24px; border-radius: var(--radius);
-      background: #fff; border: 1px solid var(--line);
+      background: var(--bg-soft); border: 1px solid var(--line);
     }
     .fact .num { font-size: 32px; font-weight: 600; letter-spacing: -0.02em; }
     .fact .lab { color: var(--ink-3); font-size: 14px; margin-top: 6px; }
@@ -220,6 +214,10 @@
 
     /* ---------- Company strip ---------- */
     .company { padding: 96px 0; border-top: 1px solid var(--line); }
+    .company-h2 {
+      font-size: var(--fs-h2); letter-spacing: -0.025em; line-height: 1.1;
+      margin: 0 0 48px; font-weight: 600; max-width: 720px;
+    }
     .ccols {
       display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
     }
@@ -268,7 +266,6 @@
       </a>
       <nav class="links">
         <a href="#products">Products</a>
-        <a href="#why">Why us</a>
         <a href="#company">Company</a>
         <a href="#tools">Tools</a>
         <a href="mailto:hello@toptechphoto.com">Contact</a>
@@ -328,31 +325,6 @@
     </div>
   </section>
 
-  <!-- ============== WHY ============== -->
-  <section class="why" id="why">
-    <div class="wrap">
-      <h2>A software company built around digital imaging, distributed work, and AI-native architecture.</h2>
-      <div class="facts">
-        <div class="fact">
-          <div class="num">10+ yrs</div>
-          <div class="lab">building digital imaging software, from raw conversion to enterprise DAM.</div>
-        </div>
-        <div class="fact">
-          <div class="num">US &amp; EU</div>
-          <div class="lab">distributed team, customers across both regions, GDPR-aware by design.</div>
-        </div>
-        <div class="fact">
-          <div class="num">AI-native</div>
-          <div class="lab">tagging, search, transcription, and reasoning baked into every product.</div>
-        </div>
-        <div class="fact">
-          <div class="num">No lock-in</div>
-          <div class="lab">your storage, your data, your control — across Google Drive and S3.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ============== TOOLS ============== -->
   <section class="tools" id="tools">
     <div class="wrap">
@@ -384,6 +356,25 @@
   <!-- ============== COMPANY ============== -->
   <section class="company" id="company">
     <div class="wrap">
+      <h2 class="company-h2">A software company built around digital imaging, distributed work, and AI-native architecture.</h2>
+      <div class="facts">
+        <div class="fact">
+          <div class="num">10+ yrs</div>
+          <div class="lab">building digital imaging software, from raw conversion to enterprise DAM.</div>
+        </div>
+        <div class="fact">
+          <div class="num">US &amp; EU</div>
+          <div class="lab">distributed team, customers across both regions, GDPR-aware by design.</div>
+        </div>
+        <div class="fact">
+          <div class="num">AI-native</div>
+          <div class="lab">tagging, search, transcription, and reasoning baked into every product.</div>
+        </div>
+        <div class="fact">
+          <div class="num">No lock-in</div>
+          <div class="lab">your storage, your data, your control — across Google Drive and S3.</div>
+        </div>
+      </div>
       <div class="ccols">
         <div class="ccol">
           <h3>About</h3>
@@ -429,7 +420,7 @@
         <div>
           <h4>Company</h4>
           <ul>
-            <li><a href="mailto:hello@toptechphoto.com">About</a></li>
+            <li><a href="#company">About</a></li>
             <li><a href="mailto:press@toptechphoto.com">Press</a></li>
             <li><a href="mailto:investors@toptechphoto.com">Investors</a></li>
           </ul>
