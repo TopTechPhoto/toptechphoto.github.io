@@ -54,6 +54,7 @@
       --pics: #2563eb;
       --toriut: #0f766e;
       --provenyx: #7c3aed;
+      --migration: #c2410c;
       --radius: 14px;
       --maxw: 1180px;
       --fs-display: clamp(40px, 6vw, 72px);
@@ -174,24 +175,19 @@
     .pcard.pics .accent-bar { background: var(--pics); }
     .pcard.toriut .accent-bar { background: var(--toriut); }
     .pcard.provenyx .accent-bar { background: var(--provenyx); }
+    .pcard.migration .accent-bar { background: var(--migration); }
     .accent-bar {
       position: absolute; top: 0; left: 0; height: 3px; width: 64px;
       border-top-left-radius: var(--radius);
     }
 
-    /* ---------- Why band ---------- */
-    .why { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .why .wrap { padding-top: 88px; padding-bottom: 88px; }
-    .why h2 {
-      font-size: var(--fs-h2); letter-spacing: -0.025em; line-height: 1.1;
-      margin: 0 0 48px; font-weight: 600; max-width: 720px;
-    }
-    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    /* ---------- Facts grid (inside company) ---------- */
+    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 64px; }
     @media (max-width: 900px) { .facts { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 540px) { .facts { grid-template-columns: 1fr; } }
     .fact {
       padding: 24px; border-radius: var(--radius);
-      background: #fff; border: 1px solid var(--line);
+      background: var(--bg-soft); border: 1px solid var(--line);
     }
     .fact .num { font-size: 32px; font-weight: 600; letter-spacing: -0.02em; }
     .fact .lab { color: var(--ink-3); font-size: 14px; margin-top: 6px; }
@@ -220,10 +216,10 @@
 
     /* ---------- Company strip ---------- */
     .company { padding: 96px 0; border-top: 1px solid var(--line); }
-    .ccols {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+    .company-h2 {
+      font-size: var(--fs-h2); letter-spacing: -0.025em; line-height: 1.1;
+      margin: 0 0 48px; font-weight: 600; max-width: 720px;
     }
-    @media (max-width: 900px) { .ccols { grid-template-columns: 1fr; } }
     .ccol h3 {
       font-size: 14px; text-transform: uppercase; letter-spacing: 0.12em;
       color: var(--ink-3); margin: 0 0 12px; font-weight: 500;
@@ -268,12 +264,11 @@
       </a>
       <nav class="links">
         <a href="#products">Products</a>
-        <a href="#why">Why us</a>
         <a href="#company">Company</a>
         <a href="#tools">Tools</a>
         <a href="mailto:hello@toptechphoto.com">Contact</a>
       </nav>
-      <a class="nav-cta" href="https://pics.io">Try Pics.io →</a>
+      <a class="nav-cta" href="https://pics.io" target="_blank" rel="noopener noreferrer">Try Pics.io →</a>
     </div>
   </header>
 
@@ -299,8 +294,8 @@
   <section class="products" id="products">
     <div class="wrap">
       <div class="section-head">
-        <h2>Two products. Built for the way modern teams manage content and catalog data.</h2>
-        <p>Each product is sold and used independently — but they share a vocabulary, a permissions model, and the same engineering foundation.</p>
+        <h2>Three ways we help modern teams manage, enrich, and move their data.</h2>
+        <p>Each offering is used independently — but they cover the full lifecycle from storage to structure to migration.</p>
       </div>
 
       <div class="pgrid">
@@ -309,7 +304,7 @@
           <span class="tag">Pics.io · DAM</span>
           <h3>Digital Asset Management</h3>
           <p>Find, share, and govern visual content with AI. Trusted by photographers, agencies, e-commerce teams, and enterprises across the US and EU. Runs on Google Drive or Amazon S3 — no vendor lock-in.</p>
-          <a class="more" href="https://pics.io">Visit Pics.io
+          <a class="more" href="https://pics.io" target="_blank" rel="noopener noreferrer">Visit Pics.io
             <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
         </article>
@@ -319,7 +314,17 @@
           <span class="tag">Toriut · PIM</span>
           <h3>Product Information Management</h3>
           <p>One source of truth for product data — specs, copy, media, translations — syndicated everywhere your products are sold. Built for catalogs that grow faster than the team managing them.</p>
-          <a class="more" href="https://toriut.com">Visit Toriut
+          <a class="more" href="https://toriut.com" target="_blank" rel="noopener noreferrer">Visit Toriut
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <article class="pcard migration">
+          <span class="accent-bar"></span>
+          <span class="tag">Services · Migration</span>
+          <h3>Data Migration Services</h3>
+          <p>We move your media and product data where it needs to go — between cloud storages, into Pics.io or Toriut, or out of them. Bulk transfers, metadata mapping, format conversion, and validation included. No data left behind.</p>
+          <a class="more" href="mailto:hello@toptechphoto.com">Talk to us about migration
             <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
         </article>
@@ -328,10 +333,38 @@
     </div>
   </section>
 
-  <!-- ============== WHY ============== -->
-  <section class="why" id="why">
+  <!-- ============== TOOLS ============== -->
+  <section class="tools" id="tools">
     <div class="wrap">
-      <h2>A software company built around digital imaging, distributed work, and AI-native architecture.</h2>
+      <div class="row">
+        <div>
+          <h2>Free tools, born from the same engineering.</h2>
+          <p>
+            Some of our internal imaging tech runs as free, in-browser utilities used by millions
+            of people every year. They're a quiet way of showing what's under the hood of Pics.io.
+          </p>
+          <a class="btn btn-ghost" href="https://raw.pics.io" target="_blank" rel="noopener noreferrer">Open raw.pics.io
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="tool-card">
+          <h3>raw.pics.io</h3>
+          <p>In-browser RAW converter. No upload, no install, no account.</p>
+          <div class="tool-list">
+            <a href="https://raw.pics.io/convert-cr2-to-jpeg" target="_blank" rel="noopener noreferrer">CR2 → JPEG</a>
+            <a href="https://raw.pics.io/convert-nef-to-jpeg" target="_blank" rel="noopener noreferrer">NEF → JPEG</a>
+            <a href="https://raw.pics.io/convert-arw-to-jpeg" target="_blank" rel="noopener noreferrer">ARW → JPEG</a>
+            <a href="https://raw.pics.io/convert-raw-to-jpeg" target="_blank" rel="noopener noreferrer">RAW → JPEG</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== COMPANY ============== -->
+  <section class="company" id="company">
+    <div class="wrap">
+      <h2 class="company-h2">A software company built around digital imaging, distributed work, and AI-native architecture.</h2>
       <div class="facts">
         <div class="fact">
           <div class="num">10+ yrs</div>
@@ -350,57 +383,14 @@
           <div class="lab">your storage, your data, your control — across Google Drive and S3.</div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ============== TOOLS ============== -->
-  <section class="tools" id="tools">
-    <div class="wrap">
-      <div class="row">
-        <div>
-          <h2>Free tools, born from the same engineering.</h2>
-          <p>
-            Some of our internal imaging tech runs as free, in-browser utilities used by millions
-            of people every year. They're a quiet way of showing what's under the hood of Pics.io.
-          </p>
-          <a class="btn btn-ghost" href="https://raw.pics.io">Open raw.pics.io
-            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-        <div class="tool-card">
-          <h3>raw.pics.io</h3>
-          <p>In-browser RAW converter. No upload, no install, no account.</p>
-          <div class="tool-list">
-            <a href="https://raw.pics.io/convert-cr2-to-jpeg">CR2 → JPEG</a>
-            <a href="https://raw.pics.io/convert-nef-to-jpeg">NEF → JPEG</a>
-            <a href="https://raw.pics.io/convert-arw-to-jpeg">ARW → JPEG</a>
-            <a href="https://raw.pics.io/convert-raw-to-jpeg">RAW → JPEG</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== COMPANY ============== -->
-  <section class="company" id="company">
-    <div class="wrap">
-      <div class="ccols">
-        <div class="ccol">
-          <h3>About</h3>
-          <p>TopTechPhoto Inc. is a Delaware-incorporated software company with a distributed team
-            across the US and EU. We build software for content, product information, and
-            company knowledge.</p>
-          <p><a class="inline" href="/about">Read our story</a></p>
-        </div>
-        <div class="ccol">
-          <h3>Press &amp; investors</h3>
-          <p>For partnership, M&amp;A, or investor questions, reach out below. We respond within
-            two business days.</p>
-          <p>
-            <a class="inline" href="mailto:press@toptechphoto.com">press@toptechphoto.com</a><br/>
-            <a class="inline" href="mailto:investors@toptechphoto.com">investors@toptechphoto.com</a>
-          </p>
-        </div>
+      <div class="ccol">
+        <h3>Press &amp; investors</h3>
+        <p>For partnership, M&amp;A, or investor questions, reach out below. We respond within
+          two business days.</p>
+        <p>
+          <a class="inline" href="mailto:press@toptechphoto.com">press@toptechphoto.com</a><br/>
+          <a class="inline" href="mailto:investors@toptechphoto.com">investors@toptechphoto.com</a>
+        </p>
       </div>
     </div>
   </section>
@@ -416,42 +406,36 @@
         <div>
           <h4>Products</h4>
           <ul>
-            <li><a href="https://pics.io">Pics.io</a></li>
-            <li><a href="https://toriut.com">Toriut</a></li>
+            <li><a href="https://pics.io" target="_blank" rel="noopener noreferrer">Pics.io</a></li>
+            <li><a href="https://toriut.com" target="_blank" rel="noopener noreferrer">Toriut</a></li>
           </ul>
         </div>
         <div>
           <h4>Tools</h4>
           <ul>
-            <li><a href="https://raw.pics.io">raw.pics.io</a></li>
+            <li><a href="https://raw.pics.io" target="_blank" rel="noopener noreferrer">raw.pics.io</a></li>
           </ul>
         </div>
         <div>
           <h4>Company</h4>
           <ul>
-            <li><a href="/about">About</a></li>
-            <li><a href="/press">Press</a></li>
+            <li><a href="#company">About</a></li>
+            <li><a href="mailto:press@toptechphoto.com">Press</a></li>
             <li><a href="mailto:investors@toptechphoto.com">Investors</a></li>
           </ul>
         </div>
         <div>
           <h4>Connect</h4>
           <ul>
-            <li><a href="https://www.linkedin.com/company/toptechphoto">LinkedIn</a></li>
-            <li><a href="https://x.com/toptechphoto">X</a></li>
-            <li><a href="https://blog.pics.io">Pics.io blog</a></li>
+            <li><a href="https://www.linkedin.com/company/toptechphoto" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://x.com/toptechphoto" target="_blank" rel="noopener noreferrer">X</a></li>
+            <li><a href="https://blog.pics.io" target="_blank" rel="noopener noreferrer">Pics.io blog</a></li>
             <li><a href="mailto:support@pics.io">Support</a></li>
           </ul>
         </div>
       </div>
       <div class="legal">
         <span>© <span id="yr">2026</span> TopTechPhoto Inc. All rights reserved.</span>
-        <span>
-          <a href="/privacy">Privacy</a>&nbsp;·&nbsp;
-          <a href="/terms">Terms</a>&nbsp;·&nbsp;
-          <a href="/dpa">DPA</a>&nbsp;·&nbsp;
-          <a href="/security">Security</a>
-        </span>
       </div>
     </div>
   </footer>
